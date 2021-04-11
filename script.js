@@ -41,9 +41,6 @@ btnPlay.addEventListener('click', () => {
     btnPlayIcon.classList.remove('fa-play')
     btnPlayIcon.classList.add('fa-pause')
     song.pause()
-    song.removeEventListener('timeupdate', () => {
-      console.log('Song paused')
-    })
   }
 })
 
@@ -61,6 +58,13 @@ btnPrev.addEventListener('click', () => {
     songIndex = songs.length - 1
   }
   changeTrack()
+})
+
+progress.addEventListener('click', e => {
+  const offset = e.offsetX
+  const width = progress.clientWidth
+  const position = (offset / width) * song.duration
+  song.currentTime = position
 })
 
 function stopSong() {
