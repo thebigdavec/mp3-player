@@ -40,6 +40,14 @@ meter {
     width: 100%;
 }
 
+meter::-webkit-meter-optimum-value {
+    background: green;
+}
+
+meter.finishing::-webkit-meter-optimum-value {
+    background: red;
+}
+
 .info {
     position: relative;
     display: grid;
