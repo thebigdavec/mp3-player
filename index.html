@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An MP3 player I'm building for my own personal use and learning purposes.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <title>My MP3 Player</title>
+</head>
+
+<body>
+    <main id="player">
+        <h1>My MP3 Player</h1>
+        <div class="info">
+            <div class="title">Blue Angel</div>
+            <meter class="progress" min="0" max="100" low="33" high="66" optimum="80" value="50" />
+        </div>
+        <div class="controls">
+            <div class="cover"><img src="images/blue-angel.jpg" alt="cover">
+                <div class="hole"></div>
+            </div>
+            <audio class="song" src="music/blue-angel.mp3"></audio>
+            <div class="buttons">
+                <div class="prev"><i class="fas fa-backward"></i>&nbsp;</div>
+                <div class="play" accesskey="p" title="play/pause (p)"><i class="fas fa-play"></i></div>
+                <div class="next">&nbsp;<i class="fas fa-forward"></i></div>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

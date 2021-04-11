@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+:root {
+    --roundness: 10px;
+    --shine-x-offset: -50%;
+    --shine-y-offset: -75%;
+    --wobble-amount: 2%;
+}
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Roboto, sans-serif;
+    margin: 0;
+    display: grid;
+    min-height: 100vh;
+    place-content: center;
+}
+
+#player {
+    background-color: #9ee;
+    background-image: linear-gradient(140deg, #fff2, #0002);
+    border: 3px solid #9ee;
+    padding: 2rem;
+    min-width: 320px;
+    border-radius: var(--roundness);
+    box-shadow: 0 4px 16px -4px #0006;
+    z-index: 2;
+}
+
+#player h1 {
+    text-align: center;
+    margin: 0 0 1em;
+}
+
+meter {
+    width: 100%;
+}
+
+.info {
+    position: relative;
+    display: grid;
+    margin-inline: 1em;
+    padding: 1em 2em 2em;
+    transform: translateY(120%);
+    border-radius: var(--roundness) var(--roundness) 0 0;
+    box-shadow: -4px -4px 4px #fff6, 4px 4px 4px #0006;
+    opacity: 0;
+    transition: transform 350ms ease-in-out, opacity 250ms ease-in-out;
+    z-index: -1;
+}
+
+#player.playing .info {
+    display: grid;
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 350ms ease-in-out, opacity 250ms ease-in-out 100ms;
+}
+
+.controls {
+    display: grid;
+    width: 100%;
+    grid-template-columns: auto 1fr;
+    gap: 3rem;
+    align-items: center;
+    padding: 1em 2em;
+    border-radius: var(--roundness);
+    box-shadow: -4px -4px 4px #fff6, 4px 4px 4px #0006;
+    background-color: #9ee;
+    background-image: linear-gradient(140deg, #fff2, #0002);
+}
+
+.cover {
+    position: relative;
+    display: grid;
+    place-content: center;
+    aspect-ratio: 1;
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    overflow: hidden;
+    box-shadow: 2px 4px 4px #0006;
+}
+
+.cover::before {
+    content: '';
+    position: absolute;
+    width: 400%;
+    height: 400%;
+    left: var(--shine-x-offset);
+    top: var(--shine-y-offset);
+    background: radial-gradient(#fff0 35%, #fff3 50%, transparent 50%);
+    z-index: 5;
+    animation: wobble 1.802s ease infinite;
+    animation-play-state: paused;
+}
+
+#player.playing .cover::before {
+    animation-play-state: running;
+}
+
+.cover::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    box-shadow: -4px -4px 4px #0005 inset, 10px 10px 20px -10px #fff6 inset, 5px 5px 10px #fff4 inset, 2px 2px 1px #fffa inset, -2px -2px 1px #000a inset;
+    z-index: 6;
+}
+
+.cover .hole {
+    position: absolute;
+    left: 62.5px;
+    top: 62.5px;
+    aspect-ratio: 1;
+    width: 25px;
+    height: 25px;
+    background-color: #9ee;
+    border-radius: 100%;
+    box-shadow: 2px 4px 4px #0006 inset, 2px 2px 1px #fffa, -2px -2px 1px #0004;
+    z-index: 6;
+}
+
+.cover img {
+    position: relative;
+    aspect-ratio: 1;
+    width: 100%;
+    object-fit: cover;
+    animation: rotate 1.802s linear infinite;
+    animation-play-state: paused;
+}
+
+#player.playing .cover img {
+    animation-play-state: running;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttons div {
+    background-color: #a0e9e9;
+    width: 3em;
+    height: 3em;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    border-radius: 3em;
+    border: 3px solid #7cc;
+    z-index: 1;
+    transition: background-color 250ms ease-out;
+    cursor: pointer;
+}
+
+.buttons div:hover {
+    background-color: white;
+}
+
+.buttons .play {
+    font-size: 2rem;
+    margin-inline: -0.7em;
+    z-index: 2;
+}
+
+.fa-pause {
+    animation: pause 2s alternate infinite ease-in-out;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes wobble {
+    50% {
+        top: calc(var(--shine-y-offset) + var(--wobble-amount));
+        left: calc(var(--shine-x-offset) + var(--wobble-amount));
+    }
+}
+
+@keyframes pause {
+    20% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    80% {
+        opacity: 1;
+    }
+}
