@@ -5,6 +5,7 @@ const btnPrev = document.querySelector('.prev')
 const player = document.getElementById('player')
 const song = document.querySelector('.song')
 const progress = document.querySelector('.progress')
+const cover = document.querySelector('.cover img')
 const title = document.querySelector('.title')
 
 const songs = [
@@ -91,6 +92,13 @@ function changeTrack(next = false) {
   }
   title.innerText = songs[songIndex].title
   song.src = `music/${songs[songIndex].filename}.mp3`
+  if (songs[songIndex].cover) {
+    console.log(`Change of cover to ${songs[songIndex].cover}`)
+    cover.src = `images/${songs[songIndex].cover}.jpg`
+  } else {
+    console.log('Song has no cover')
+    cover.src = 'images/base-record.png'
+  }
   song.load()
 
   btnPlayIcon.classList.remove('fa-pause')
