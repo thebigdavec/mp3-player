@@ -8,10 +8,18 @@ const progress = document.querySelector('.progress')
 const title = document.querySelector('.title')
 
 const songs = [
-  { filename: 'california-blue', title: 'California Blue' },
-  { filename: 'its-over', title: "It's Over" },
-  { filename: 'oh-pretty-woman', title: 'Oh, Pretty Woman' },
-  { filename: 'penny-arcade', title: 'Penny Arcade' }
+  {
+    filename: 'california-blue',
+    title: 'California Blue',
+    cover: 'california-blue'
+  },
+  { filename: 'its-over', title: "It's Over", cover: 'its-over' },
+  {
+    filename: 'oh-pretty-woman',
+    title: 'Oh, Pretty Woman',
+    cover: 'oh-pretty-woman'
+  },
+  { filename: 'penny-arcade', title: 'Penny Arcade', cover: 'penny-arcade' }
 ]
 let songIndex = 0
 changeTrack()
