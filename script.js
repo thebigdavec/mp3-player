@@ -1,9 +1,20 @@
 const btnPlay = document.querySelector('.play')
 const btnPlayIcon = btnPlay.querySelector('i')
 const btnNext = document.querySelector('.next')
+const btnPrev = document.querySelector('.prev')
 const player = document.getElementById('player')
 const song = document.querySelector('.song')
 const progress = document.querySelector('.progress')
+const title = document.querySelector('.title')
+
+const songs = [
+  { filename: 'california-blue', title: 'California Blue' },
+  { filename: 'its-over', title: "It's Over" },
+  { filename: 'oh-pretty-woman', title: 'Oh, Pretty Woman' },
+  { filename: 'penny-arcade', title: 'Penny Arcade' }
+]
+let songIndex = 0
+changeTrack()
 
 btnPlay.addEventListener('click', () => {
   player.classList.toggle('playing')
@@ -19,7 +30,7 @@ btnPlay.addEventListener('click', () => {
       if (position > 95) {
         progress.classList.add('finishing')
         if (position >= 100) {
-          stopSong()
+          changeTrack(true)
         }
       } else {
         progress.classList.remove('finishing')
@@ -37,7 +48,19 @@ btnPlay.addEventListener('click', () => {
 })
 
 btnNext.addEventListener('click', () => {
-  song.currentTime = (song.duration / 10) * 9.4
+  songIndex++
+  if (songIndex === songs.length) {
+    songIndex = 0
+  }
+  changeTrack()
+})
+
+btnPrev.addEventListener('click', () => {
+  songIndex--
+  if (songIndex < 0) {
+    songIndex = songs.length - 1
+  }
+  changeTrack()
 })
 
 function stopSong() {
@@ -46,4 +69,24 @@ function stopSong() {
   btnPlayIcon.classList.add('fa-play')
   progress.value = 0
   song.load()
+}
+function changeTrack(next = false) {
+  if (next) {
+    songIndex++
+    if (songIndex === songs.length) {
+      songIndex = 0
+    }
+  }
+  title.innerText = songs[songIndex].title
+  song.src = `music/${songs[songIndex].filename}.mp3`
+  song.load()
+
+  btnPlayIcon.classList.remove('fa-pause')
+  btnPlayIcon.classList.add('fa-play')
+
+  if (player.classList.contains('playing')) {
+    song.play()
+  } else {
+    stopSong()
+  }
 }

@@ -36,6 +36,10 @@ body {
     margin: 0 0 1em;
 }
 
+.title {
+    text-transform: capitalize;
+}
+
 meter {
     width: 100%;
 }
