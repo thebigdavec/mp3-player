@@ -22,7 +22,6 @@ body {
 #player {
     background-color: #9ee;
     background-image: linear-gradient(140deg, #fff2, #0002);
-    /* border: 3px solid #9ee; */
     padding: 2rem;
     min-width: 320px;
     border-radius: var(--roundness);
@@ -30,9 +29,10 @@ body {
     z-index: 2;
 }
 
-#player h1 {
+#player :is(h1, h3, p) {
     text-align: center;
-    margin: 0 0 1em;
+    margin-top: 0;
+    max-width: 70ch;
 }
 
 .title {
@@ -147,6 +147,8 @@ progress {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: fit-content;
+    justify-self: center;
 }
 
 .buttons div {
