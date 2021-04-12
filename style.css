@@ -17,6 +17,7 @@ body {
     display: grid;
     min-height: 100vh;
     place-content: center;
+    color: #111;
 }
 
 #player {
@@ -29,10 +30,18 @@ body {
     z-index: 2;
 }
 
-#player :is(h1, h3, p) {
+#player :is(h1, h2, h3, p) {
     text-align: center;
     margin-top: 0;
     max-width: 70ch;
+}
+
+#player h2 {
+    color: #222;
+}
+
+#player p {
+    color: #444;
 }
 
 .title {
@@ -46,9 +55,7 @@ progress {
 .info {
     position: relative;
     display: grid;
-    margin-left: 1em;
-    margin-right: 1em;
-    margin-bottom: -1em;
+    margin: 1.5em 1em -1em;
     padding: 1em 2em 3em;
     border-radius: var(--roundness) var(--roundness) 0 0;
     box-shadow: 2px 2px 4px #fff6 inset, -2px -2px 4px #0006 inset, 4px 4px 4px #0006, 4px 4px 16px #0006;
