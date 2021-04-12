@@ -182,6 +182,10 @@ progress {
     animation: pause 2s alternate infinite ease-in-out;
 }
 
+.hidden {
+    display: none;
+}
+
 @keyframes rotate {
     to {
         transform: rotate(360deg);

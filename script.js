@@ -1,5 +1,6 @@
 const btnPlay = document.querySelector('.play')
 const btnPlayIcon = btnPlay.querySelector('.fa-play')
+const btnPauseIcon = btnPlay.querySelector('.fa-pause')
 const btnNext = document.querySelector('.next')
 const btnPrev = document.querySelector('.prev')
 const player = document.getElementById('player')
@@ -28,8 +29,8 @@ changeTrack()
 btnPlay.addEventListener('click', () => {
   player.classList.toggle('playing')
   if (player.classList.contains('playing')) {
-    btnPlayIcon.classList.remove('fa-pause')
-    btnPlayIcon.classList.add('fa-play')
+    btnPlayIcon.classList.remove('hidden')
+    btnPauseIcon.classList.add('hidden')
     song.addEventListener('timeupdate', () => {
       const duration = song.duration
       const currentTime = song.currentTime
@@ -43,8 +44,8 @@ btnPlay.addEventListener('click', () => {
     })
     song.play()
   } else {
-    btnPlayIcon.classList.remove('fa-play')
-    btnPlayIcon.classList.add('fa-pause')
+    btnPauseIcon.classList.remove('hidden')
+    btnPlayIcon.classList.add('hidden')
     song.pause()
   }
 })
