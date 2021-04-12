@@ -1,5 +1,5 @@
 const btnPlay = document.querySelector('.play')
-const btnPlayIcon = btnPlay.querySelector('i')
+const btnPlayIcon = btnPlay.querySelector('.fa-play')
 const btnNext = document.querySelector('.next')
 const btnPrev = document.querySelector('.prev')
 const player = document.getElementById('player')

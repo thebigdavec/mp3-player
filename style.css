@@ -163,8 +163,16 @@ progress {
     background-color: white;
 }
 
+.buttons svg {
+    font-size: 0.5rem;
+    padding: 1rem;
+}
+
 .buttons .play {
-    font-size: 2rem;
+    width: 4em;
+    height: 4em;
+    padding: 0.5rem;
+    font-size: 1.5rem;
     margin-inline: -0.7em;
     z-index: 2;
 }
