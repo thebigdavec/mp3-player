@@ -47,7 +47,8 @@ progress {
 .info {
     position: relative;
     display: grid;
-    margin-inline: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
     padding: 1em 2em 2em;
     border-radius: var(--roundness) var(--roundness) 0 0;
     box-shadow: -4px -4px 4px #fff6, 4px 4px 4px #0006;
@@ -77,7 +78,6 @@ progress {
     position: relative;
     display: grid;
     place-content: center;
-    aspect-ratio: 1;
     width: 150px;
     height: 150px;
     border-radius: 75px;
@@ -116,7 +116,6 @@ progress {
     position: absolute;
     left: 62.5px;
     top: 62.5px;
-    aspect-ratio: 1;
     width: 25px;
     height: 25px;
     background-color: #9ee;
@@ -127,7 +126,6 @@ progress {
 
 .cover img {
     position: relative;
-    aspect-ratio: 1;
     width: 100%;
     object-fit: cover;
     animation: rotate 1.802s linear infinite;
@@ -164,16 +162,15 @@ progress {
 }
 
 .buttons svg {
-    font-size: 0.5rem;
     padding: 1rem;
 }
 
 .buttons .play {
     width: 4em;
     height: 4em;
-    padding: 0.5rem;
-    font-size: 1.5rem;
-    margin-inline: -0.7em;
+    padding: 0.65rem;
+    margin-left: -0.7em;
+    margin-right: -0.7em;
     z-index: 2;
 }
 
