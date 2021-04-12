@@ -30,7 +30,6 @@ let songIndex = 0
 changeTrack()
 
 btnPlay.addEventListener('click', () => {
-  console.log(song.readyState)
   player.classList.toggle('playing')
   if (player.classList.contains('playing')) {
     btnPlayIcon.classList.remove('hidden')
@@ -41,7 +40,11 @@ btnPlay.addEventListener('click', () => {
       }
       const position = (song.currentTime / song.duration) * 100
 
-      song.ended ? changeTrack(true) : (progress.value = position)
+      song.ended
+        ? changeTrack(true)
+        : position
+        ? (progress.value = position)
+        : (progress.value = 0)
     })
     song.play()
   } else {
@@ -120,7 +123,6 @@ function setDisplay() {
   durationSpan.innerText = getTime(duration)
 }
 function getTime(seconds) {
-  console.log(seconds)
   const minutes = parseInt(seconds / 60, 10)
   seconds = parseInt(seconds % 60)
   if (seconds < 10) seconds = '0' + seconds
