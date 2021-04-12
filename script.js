@@ -8,6 +8,9 @@ const song = document.querySelector('.song')
 const progress = document.querySelector('.progress')
 const cover = document.querySelector('.cover img')
 const title = document.querySelector('.title')
+const currentTimeSpan = document.querySelector('.current-time')
+const timeLeftSpan = document.querySelector('.time-left')
+const durationSpan = document.querySelector('.duration')
 
 const songs = [
   {
@@ -27,20 +30,18 @@ let songIndex = 0
 changeTrack()
 
 btnPlay.addEventListener('click', () => {
+  console.log(song.readyState)
   player.classList.toggle('playing')
   if (player.classList.contains('playing')) {
     btnPlayIcon.classList.remove('hidden')
     btnPauseIcon.classList.add('hidden')
     song.addEventListener('timeupdate', () => {
-      const duration = song.duration
-      const currentTime = song.currentTime
-      const position = (currentTime / duration) * 100
-
-      if (position < 100) progress.value = position
-
-      if (position >= 100) {
-        changeTrack(true)
+      if (song.readyState >= 2) {
+        setDisplay()
       }
+      const position = (song.currentTime / song.duration) * 100
+
+      song.ended ? changeTrack(true) : (progress.value = position)
     })
     song.play()
   } else {
@@ -75,10 +76,9 @@ progress.addEventListener('click', e => {
 
 function stopSong() {
   player.classList.remove('playing')
-  btnPlayIcon.classList.remove('fa-pause')
-  btnPlayIcon.classList.add('fa-play')
+  btnPlayIcon.classList.remove('hidden')
+  btnPauseIcon.classList.add('hidden')
   progress.value = 0
-  song.load()
 }
 function changeTrack(next = false) {
   if (next) {
@@ -89,14 +89,12 @@ function changeTrack(next = false) {
   }
   title.innerText = songs[songIndex].title
   song.src = `music/${songs[songIndex].filename}.mp3`
+
   if (songs[songIndex].cover) {
-    console.log(`Change of cover to ${songs[songIndex].cover}`)
     cover.src = `images/${songs[songIndex].cover}.jpg`
   } else {
-    console.log('Song has no cover')
     cover.src = 'images/base-record.png'
   }
-  song.load()
 
   btnPlayIcon.classList.remove('fa-pause')
   btnPlayIcon.classList.add('fa-play')
@@ -106,4 +104,26 @@ function changeTrack(next = false) {
   } else {
     stopSong()
   }
+  song.addEventListener('loadeddata', () => {
+    if (song.readyState > 2) {
+      setDisplay()
+    }
+  })
+}
+function setDisplay() {
+  const duration = song.duration
+  const currentTime = song.currentTime
+  const position = (currentTime / duration) * 100
+
+  currentTimeSpan.innerText = getTime(currentTime)
+  timeLeftSpan.innerText = getTime(duration - currentTime)
+  durationSpan.innerText = getTime(duration)
+}
+function getTime(seconds) {
+  console.log(seconds)
+  const minutes = parseInt(seconds / 60, 10)
+  seconds = parseInt(seconds % 60)
+  if (seconds < 10) seconds = '0' + seconds
+  const time = minutes + ':' + seconds
+  return time
 }

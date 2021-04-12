@@ -18,13 +18,17 @@
         <h1>My MP3 Player</h1>
         <div class="info">
             <div class="title">Press Play (ctrl alt P)</div>
-            <progress class="progress" min="0" max="100" value="0" />
+            <progress class="progress" min="0" max="100" value="0"></progress>
+            <div class="times">
+                <div class="current-time">0:00</div>
+                <div><span class="time-left">3:56</span>/<span class="duration">3:56</span></div>
+            </div>
         </div>
         <div class="controls">
             <div class="cover"><img src="images/base-record.png" width="150" height="150" alt="cover">
                 <div class="hole"></div>
             </div>
-            <audio class="song" src=""></audio>
+            <audio preload="meta" class="song" src=""></audio>
             <div class="buttons">
                 <div class="prev"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="backward" class="svg-inline--fa fa-backward fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <path fill="currentColor"

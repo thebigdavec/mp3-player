@@ -58,6 +58,12 @@ progress {
     z-index: -1;
 }
 
+.times {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+}
+
 #player.playing .info {
     opacity: 1;
 }
