@@ -35,14 +35,10 @@ btnPlay.addEventListener('click', () => {
       const currentTime = song.currentTime
       const position = (currentTime / duration) * 100
 
-      if (position <= 100) progress.value = position
-      if (position > 95) {
-        progress.classList.add('finishing')
-        if (position >= 100) {
-          changeTrack(true)
-        }
-      } else {
-        progress.classList.remove('finishing')
+      if (position < 100) progress.value = position
+
+      if (position >= 100) {
+        changeTrack(true)
       }
     })
     song.play()
