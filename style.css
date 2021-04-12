@@ -23,11 +23,11 @@ body {
 #player {
     background-color: #9ee;
     background-image: linear-gradient(140deg, #fff2, #0002);
-    border: 3px solid #9ee;
+    /* border: 3px solid #9ee; */
     padding: 2rem;
     min-width: 320px;
     border-radius: var(--roundness);
-    box-shadow: 0 4px 16px -4px #0006;
+    box-shadow: 4px 4px 4px #fff6 inset, -4px -4px 4px #0006 inset, 0 4px 16px -4px #0006, 4px 8px 20px #0004;
     z-index: 2;
 }
 
@@ -49,10 +49,12 @@ progress {
     display: grid;
     margin-left: 1em;
     margin-right: 1em;
-    padding: 1em 2em 2em;
+    margin-bottom: -1em;
+    padding: 1em 2em 3em;
     border-radius: var(--roundness) var(--roundness) 0 0;
-    box-shadow: -4px -4px 4px #fff6, 4px 4px 4px #0006;
+    box-shadow: 2px 2px 4px #fff6 inset, -2px -2px 4px #0006 inset, 4px 4px 4px #0006, 4px 4px 16px #0006;
     opacity: 0.5;
+    background-image: linear-gradient(140deg, #fff1, #0001);
     transition: opacity 250ms ease-in-out;
     z-index: -1;
 }
@@ -69,7 +71,7 @@ progress {
     align-items: center;
     padding: 1em 2em;
     border-radius: var(--roundness);
-    box-shadow: -4px -4px 4px #fff6, 4px 4px 4px #0006;
+    box-shadow: 4px 4px 4px #fff6 inset, 4px 4px 4px #0006, -4px -4px 4px #0006 inset, 4px 4px 16px #0006;
     background-color: #9ee;
     background-image: linear-gradient(140deg, #fff2, #0002);
 }
