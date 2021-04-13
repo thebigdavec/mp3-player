@@ -142,6 +142,7 @@ progress {
     position: relative;
     width: 100%;
     object-fit: cover;
+    border-radius: 100%;
     animation: rotate 1.802s linear infinite;
     animation-play-state: paused;
 }
